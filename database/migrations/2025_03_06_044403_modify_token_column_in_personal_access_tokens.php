@@ -8,9 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('personal_access_tokens', function (Blueprint $table) {
-            $table->dropIndex(['token']);
-
-            $table->text('token')->change();
+            $table->string('token', 512)->change();
         });
     }
 
@@ -18,8 +16,6 @@ return new class extends Migration {
     {
         Schema::table('personal_access_tokens', function (Blueprint $table) {
             $table->string('token', 255)->change();
-
-            $table->index('token');
         });
     }
 };
